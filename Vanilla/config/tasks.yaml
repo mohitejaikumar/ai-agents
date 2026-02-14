@@ -1,0 +1,23 @@
+query_parser_task:
+    description: >
+        """Parse the user's {query} to extract in structured JSON format
+        - amount
+        - from_currency
+        - to_currency"""
+    agent: query_parser_agent
+    expected_output: >
+        A structured JSON object with 
+        identified amount, from_currency, and to_currency.
+    verbose: true
+
+currency_conversion_task:
+    description: >
+        """Convert the x amount of one currency to another currency
+        using real-time exchange rates.
+        Provide the equivalent amount and 
+        explain any relevant financial context."""
+    agent: currency_analyst
+    expected_output: >
+        A detailed response including the 
+        converted amount and financial insights.
+    verbose: true
