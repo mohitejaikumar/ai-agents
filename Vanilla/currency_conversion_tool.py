@@ -3,6 +3,7 @@ from typing import Type
 from crewai.tools import BaseTool
 import os
 from dotenv import load_dotenv
+import requests
 
 load_dotenv()
 
@@ -20,8 +21,7 @@ class CurrencyConversionTool(BaseTool):
 
 
     def _run(self, amount: float, from_currency: str, to_currency: str) -> str:
-        import requests
-
+        
         url = f"https://v6.exchangerate-api.com/v6/{self.api_key}/latest/{from_currency}"
         response = requests.get(url)
 
