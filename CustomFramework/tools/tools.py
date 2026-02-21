@@ -34,4 +34,16 @@ class Tool:
         """Returns the JSON representation of this tool's signature."""
     
         return self.signature.to_json()
+
+
+
+def tool(func: Callable) -> Tool:
+    """
+    Decorator that converts a function into a Tool with introspected signature.
+    """
     
+    sig = FunctionSignature(func)
+    
+    validator = ArgumentValidator()
+    
+    return Tool(function=func, signature=sig, validator=validator)
